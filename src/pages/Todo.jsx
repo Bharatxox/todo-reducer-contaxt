@@ -4,6 +4,7 @@ import TodoList from "../components/TodoList";
 import { MyContext } from "../context/MyContext";
 import { useContext } from "react";
 import { TODO_TYPES } from "../context";
+import Calendar from "react-calendar";
 
 const Todo = () => {
   const { dispatch } = useContext(MyContext);
@@ -19,6 +20,9 @@ const Todo = () => {
     dispatch({ type: TODO_TYPES.ADD_TODO, payload: todo });
     settodo("");
   };
+
+  const [value, onChange] = useState("");
+  console.log(value);
 
   return (
     <>
@@ -43,6 +47,9 @@ const Todo = () => {
               <TodoList />
             </ul>
           </div>
+        </div>
+        <div>
+          <Calendar onChange={onChange} value={value} />
         </div>
       </section>
     </>
